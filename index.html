@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script src="https://unpkg.com/kontra@10.0.2/kontra.js"></script>
+    </head>
+    <body>
+        <canvas id="gameid" width="600" height="600"></canvas>
+        <script>
+            let { init, initKeys, Sprite, GameLoop, keyPressed } = kontra
+
+            let { canvas } = init();
+            initKeys();
+            let player = Sprite({
+                x: 100,
+                y: 100,
+                width: 40,
+                height: 30,
+                color: 'blue',
+                update: function () {
+                    console.log("update triggered");
+                    if(keyPressed("arrowright")){
+                        console.log("rightarrow");
+                        this.x += 2;
+                    }
+
+                   //this.x += 2;
+                   //this.y += 2;
+                }
+            });
+            let game = GameLoop({
+                update: function() { // update the game state
+                    player.update();
+
+                },
+                render: function() { // render the game state
+                    player.render();
+                }
+            });
+            game.start();
+
+        </script>
+    </body>
+</html>
