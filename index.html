@@ -36,18 +36,28 @@
                         console.log("downarrow");
                         this.y +=2;
                     }
-
-                   //this.x += 2;
-                   //this.y += 2;
                 }
             });
+
+            let enemy = Sprite({
+                x: 500,
+                y: 100,
+                width: 40,
+                height: 30,
+                color: 'red',
+                update: function () {
+
+                }
+            })
             let game = GameLoop({
                 update: function() { // update the game state
                     player.update();
+                    enemy.update();
 
                 },
                 render: function() { // render the game state
                     player.render();
+                    enemy.render();
                 }
             });
             game.start();
