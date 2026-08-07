@@ -16,8 +16,8 @@
             let { canvas } = init();
             initKeys();
             let player = Sprite({
-                x: 100,
-                y: 100,
+                x: 0,
+                y: 0,
                 width: 40,
                 height: 30,
                 color: 'blue',
@@ -56,6 +56,11 @@
                 update: function() { // update the game state
                     player.update();
                     enemy.update();
+                    if (overlaps (player.x,player.x+player.width,enemy.x,enemy.x+enemy.width) &&
+                        overlaps (player.y,player.y+player.height,enemy.y,enemy.y+enemy.height)
+                    ) {
+                        player.color = "black"
+                    }
 
                 },
                 render: function() { // render the game state
