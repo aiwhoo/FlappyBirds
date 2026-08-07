@@ -18,6 +18,7 @@
             let player = Sprite({
                 x: 0,
                 y: 0,
+                v: 0,
                 width: 40,
                 height: 30,
                 color: 'blue',
@@ -31,14 +32,15 @@
                         console.log("leftarrow");
                         this.x -= 2;
                     }
+
+                    let a = .5
                     if (keyPressed("arrowup")){
-                        console.log("uparrow");
-                        this.y -=2;
+                       a = a - 1.5
                     }
-                    if (keyPressed("arrowdown")){
-                        console.log("downarrow");
-                        this.y +=2;
-                    }
+                    this.y = this.y + this.v
+                    this.v = this.v + a
+
+
                 }
             });
 
@@ -50,6 +52,9 @@
                 color: 'red',
                 update: function () {
                     this.x -= 2;
+                    if (this.x < 0){
+                        this.x = canvas.width
+                    }
                 }
             })
             let game = GameLoop({
